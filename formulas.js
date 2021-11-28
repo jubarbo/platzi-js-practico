@@ -1,43 +1,75 @@
 
-const pi = Math.PI
+const calcPromedio = lista => {
+
+    const sumaLista = lista.reduce(
+        function(acumulado = 0, nuevo) {
+            return acumulado = acumulado + nuevo
+        }
+    )
+
+    const promedio = sumaLista / lista.length
+
+    return promedio
+}
 
 
-let perimetroCuadrado = lado => {
-    return lado * 4
-} 
+const esPar = numero => {
+    if(numero % 2 === 0) {
+        return true
+    } else {
+        return false
+    } 
+}
 
-let areaCuadrado = lado => {
-    return lado * lado
-} 
 
-let perimetroTriangulo = (base, lado1, lado2) => {
-    return lado1 + lado2 + base
-} 
+const calcMediana = lista => {
+
+    lista.sort(function(a, b){return a - b})
+    const mitad = parseInt(lista.length / 2) 
+
+    if(esPar(lista.length)) {
+
+        const el1 = lista[mitad - 1]; 
+        const el2 = lista[mitad];
         
-let areaTriangulo = (base, altura) => {
-    return (base * altura) / 2
-} 
+        const mediana = calcPromedio([el1, el2])
+        return mediana
+    } else {
+
+        const mediana = lista[mitad];       
+
+        return mediana;
+    } 
+
+}
 
 
-let diametroCirculo = (radio) => {
-    return radio * 2
-} 
+const calcModa = lista => {
 
-let perimetroCirculo = (radio) => {
-    const diametro = diametroCirculo(radio)
-    return diametro * pi 
-} 
+    //creo lista para conteo
+    const listaCount = {};
+
+    //map para contar cada elemento
+    lista.map(
+        function(elem) {
+            if(listaCount[elem]) {
+                listaCount[elem] += 1
+            } else {
+                listaCount[elem] = 1
+            }
+        }
+    )
+
+    //sort para ordenar la cantidad 
+    const ordenados = Object.entries(listaCount).sort(
+        function (el1, el2) {
+            return el1[1] - el2[1] 
+        }
+    )
+
+    const moda = ordenados[ordenados.length - 1]
 
 
-let areaCirculo = (radio) => {
-    return (radio * radio) * pi
-} 
-        
-
-console.log(perimetroCuadrado(10))
-console.log(areaCuadrado(10))
-console.log(perimetroTriangulo(5,4,10))
-console.log(areaTriangulo(10,4))
-console.log(diametroCirculo(10))
-console.log(perimetroCirculo(12))
-console.log(areaCirculo(4))
+    return moda
+  
+}

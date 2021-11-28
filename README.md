@@ -1,6 +1,6 @@
 # platzi-js-practico
 
-## Taller #1: figuras geometricas 
+## Taller #3: promedio, moda y mediana 
 
 - Primer paso: definir fórmulas.
 - Segundo paso: implementar fórmulas en js.
