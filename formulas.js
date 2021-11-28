@@ -73,3 +73,45 @@ const calcModa = lista => {
     return moda
   
 }
+
+const valores = []
+const valor = document.getElementById("valor")
+const respuesta = document.getElementById("respuesta")
+const respuestaArray = document.getElementById("respuestaArray")
+const respuestaPromedio = document.getElementById("respuestaPromedio")
+const respuestaModa = document.getElementById("respuestaModa")
+const respuestaMediana = document.getElementById("respuestaMediana")
+
+    
+const addToArray = () => {
+
+    
+    if(!valor.value) {
+        alert("Debe ingresar un valor")
+    }
+
+    if(valor.value) {
+        respuesta.innerHTML = "Se ha ingresado: " + valor.value
+
+        valores.push(parseInt(valor.value))
+
+        respuestaArray.innerHTML = "El array es: " + valores
+
+        const promedio = calcPromedio(valores)    
+
+        respuestaPromedio.innerHTML = "El promedio es: " + promedio
+
+        const moda = calcModa(valores)
+        
+        respuestaModa.innerHTML = `La moda es: ${moda[0]} que se repite ${moda[1]} veces.` 
+        
+        const mediana = calcMediana(valores)
+
+        respuestaMediana.innerHTML = "La mediana es: " + mediana
+        // console.log(promedio)
+    }
+
+
+    // return valores
+
+}
